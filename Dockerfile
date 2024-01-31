@@ -22,7 +22,7 @@ RUN apk add --no-cache ca-certificates \
 ENV TZ=Asia/Shanghai \
     CRON="0 0 */7 * *"
 
-COPY scripts /
+COPY scripts /scripts
 COPY config/* /etc/mosdns/
 RUN apk add --no-cache wget dcron alpine-conf \
     && chmod a+x /scripts/entrypoint.sh \
