@@ -16,6 +16,7 @@ LABEL maintainer="fordes123 <github.com/fordes123>"
 
 COPY --from=builder /root/mosdns/mosdns /usr/bin/
 
+USER root
 RUN apk add --no-cache ca-certificates \
 	&& mkdir /etc/mosdns
 
@@ -25,8 +26,7 @@ ENV TZ=Asia/Shanghai \
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
 RUN apk add --no-cache wget dcron alpine-conf \
-    && chmod a+x /scripts/entrypoint.sh \
-    && chmod a+x /scripts/update.sh
+    && chmod a+x /scripts/*
 
 VOLUME /etc/mosdns
 EXPOSE 53/udp 53/tcp
