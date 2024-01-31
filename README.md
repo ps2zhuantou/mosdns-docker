@@ -17,7 +17,7 @@ services:
       - /path/to/mosdns:/etc/mosdns
     environment:
       - TZ=Asia/Shanghai
-      - CRON=*/2 * * * *
+      - CRON=0 0 */7 * *
     ports:
       - 53:53/tcp
       - 53:53/udp
@@ -40,10 +40,10 @@ docker run -d \
 
 ### Parameters
 
-|      Parameter	       | Function                               
-|:---------------------:|:---------------------------------------|
-|        `-p 53`        | DNS port.                              
-|   `-v /etc/mosdns`    | config path.                           
+| Parameter	            | Function                               
+|:----------------------|:---------------------------------------|
+| `-p 53`               | DNS port.                              
+| `-v /etc/mosdns`      | config path.                           
 | `-e TZ=Asia/Shanghai` | server time zone                       
 | `-e CRON=0 0 */7 * *` | auto update geoip rule cron expression 
 
