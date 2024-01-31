@@ -22,14 +22,12 @@ RUN apk add --no-cache ca-certificates \
 ENV TZ=Asia/Shanghai \
     CRON="0 0 */7 * *"
 
-COPY ./entrypoint.sh /entrypoint.sh
-COPY ./update.sh /update.sh
-COPY ./config.yaml /etc/mosdns/config.yaml
-COPY ./hosts /etc/mosdns/hosts
+COPY scripts /
+COPY config/* /etc/mosdns/
 RUN apk add --no-cache wget dcron alpine-conf \
-    && chmod a+x /entrypoint.sh \
-    && chmod a+x /update.sh
+    && chmod a+x /scripts/entrypoint.sh \
+    && chmod a+x /scripts/update.sh
 
 VOLUME /etc/mosdns
 EXPOSE 53/udp 53/tcp
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/scripts/entrypoint.sh" ]
