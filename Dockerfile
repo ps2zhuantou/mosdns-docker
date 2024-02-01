@@ -25,7 +25,7 @@ ENV TZ=Asia/Shanghai \
 
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
-RUN apk add --no-cache wget dcron alpine-conf \
+RUN apk add --no-cache wget dcron tzdata \
     && chmod a+x /scripts/*
 
 VOLUME /etc/mosdns

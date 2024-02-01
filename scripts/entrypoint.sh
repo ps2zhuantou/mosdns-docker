@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 设置时区
-/sbin/setup-timezone -z "$TZ"
+ln -sf /usr/share/zoneinfo/$TZ /etc/localtime
 
 # 更新crontab配置并加载更新任务
 echo "$CRON /scripts/update.sh && /scripts/restart.sh" > /etc/crontabs/root
