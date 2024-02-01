@@ -32,7 +32,7 @@ docker run -d \
   --restart unless-stopped \
   --env TZ=Asia/Shanghai \
   --env CRON='0 0 */7 * *' \
-  -v /path/to/mosdns:/etc/mosdns
+  -v /path/to/mosdns:/etc/mosdns \
   -p 53:53/tcp \
   -p 53:53/udp \
   fordes123/mosdns:latest
