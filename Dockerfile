@@ -14,19 +14,17 @@ RUN apk add --update git \
 FROM --platform=${TARGETPLATFORM} alpine:latest
 LABEL maintainer="fordes123 <github.com/fordes123>"
 
-COPY --from=builder /root/mosdns/mosdns /usr/bin/
-
-USER root
-RUN apk add --no-cache ca-certificates \
-	&& mkdir /etc/mosdns
-
 ENV TZ=Asia/Shanghai \
     CRON="0 0 */7 * *"
 
+WORKDIR /etc/mosdns
+COPY --from=builder /root/mosdns/mosdns /usr/bin/
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
-RUN apk add --no-cache wget dcron tzdata \
-    && chmod a+x /scripts/*
+
+USER root
+RUN apk add --no-cache ca-certificates wget dcron tzdata \
+	&& chmod a+x /scripts/* \
 
 VOLUME /etc/mosdns
 EXPOSE 53/udp 53/tcp
