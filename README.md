@@ -52,4 +52,5 @@ docker run -d \
 ### Acknowledgements
 
 > this repository source code copy from [IrineSistiana/mosdns-docker](https://github.com/IrineSistiana/mosdns-docker)  
-> config file reference from [mosdns community](https://github.com/IrineSistiana/mosdns/discussions)
+> config file reference from [mosdns community](https://github.com/IrineSistiana/mosdns/discussions)  
+> geoip geosite lists source [17mon/china_ip_list](https://github.com/17mon/china_ip_list) and [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)
