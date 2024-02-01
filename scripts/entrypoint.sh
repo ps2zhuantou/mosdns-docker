@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # 设置时区
 ln -sf /usr/share/zoneinfo/$TZ /etc/localtime
 
@@ -9,6 +8,5 @@ echo "$CRON /scripts/update.sh && /scripts/restart.sh" > /etc/crontabs/root
 # 启动cron服务
 /usr/sbin/crond -b -l 8
 
-# 立即执行一次更新任务并启动程序
-/scripts/update.sh
+# 启动程序
 /usr/bin/mosdns start --dir /etc/mosdns

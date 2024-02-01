@@ -24,7 +24,8 @@ COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
 RUN apk add --no-cache ca-certificates wget dcron tzdata \
-	&& chmod a+x /scripts/*
+	&& chmod a+x /scripts/* \
+    && /scripts/update.sh
 
 VOLUME /etc/mosdns
 EXPOSE 53/udp 53/tcp
