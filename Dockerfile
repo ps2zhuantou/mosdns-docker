@@ -17,14 +17,14 @@ LABEL maintainer="fordes123 <github.com/fordes123>"
 ENV TZ=Asia/Shanghai \
     CRON="0 0 */7 * *"
 
+USER root
 WORKDIR /etc/mosdns
 COPY --from=builder /root/mosdns/mosdns /usr/bin/
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
-USER root
 RUN apk add --no-cache ca-certificates wget dcron tzdata \
-	&& chmod a+x /scripts/* \
+	&& chmod a+x /scripts/*
 
 VOLUME /etc/mosdns
 EXPOSE 53/udp 53/tcp
